@@ -12,7 +12,7 @@ dev-libs/libaio 0.3.112: Asynchronous input/output library that uses the kernels
 dev-libs/libbsd 0.11.3: Library to provide useful functions commonly found on BSD systems
 dev-libs/libffi 3.4.2-r1: a portable, high level programming interface to various calling conventions
 dev-libs/nspr 4.32: Netscape Portable Runtime
-dev-libs/openssl 1.1.1l-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.1.1m: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/userspace-rcu 0.13.0: userspace RCU (read-copy-update) library
 dev-util/catalyst 3.0.20: Release metatool used for creating releases based on Gentoo Linux
 dev-util/strace 5.14-r1: A useful diagnostic, instructional, and debugging tool
