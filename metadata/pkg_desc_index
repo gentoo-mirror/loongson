@@ -21,7 +21,7 @@ media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
 net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
 sys-apps/diffutils 3.8: Tools to make diffs and compare files
 sys-apps/grep 3.7: GNU regular expression matcher
-sys-apps/portage 3.0.30: The package management and distribution system for Gentoo
+sys-apps/portage 3.0.30-r1: The package management and distribution system for Gentoo
 sys-apps/systemd 249.6-r1: System and service manager for Linux
 sys-apps/systemd-tmpfiles 249.5: Creates, deletes and cleans up volatile and temporary files and directories
 sys-apps/texinfo 6.8: The GNU info program and utilities
