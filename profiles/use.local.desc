@@ -45,10 +45,6 @@ app-emulation/qemu:xattr - Add support for getting and setting POSIX extended at
 app-emulation/qemu:xen - Enables support for Xen backends
 app-emulation/qemu:xfs - Support xfsctl() notification and syncing for XFS backed virtual disks.
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
-app-shells/bash:bashlogger - Log ALL commands typed into bash; should ONLY be used in restricted environments such as honeypots
-app-shells/bash:mem-scramble - Build with custom malloc/free overwriting allocated/freed memory
-app-shells/bash:net - Enable /dev/tcp/host/port redirection
-app-shells/bash:plugins - Add support for loading builtins at runtime via 'enable'
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems
 dev-lang/spidermonkey:clang - Use Clang compiler instead of GCC
 dev-lang/spidermonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
