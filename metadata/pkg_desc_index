@@ -25,6 +25,9 @@ sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/binutils 2.37_p1-r1: Tools necessary to build programs
 sys-devel/gcc 12.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gdb 9999: GNU debugger
+sys-devel/llvm 11.1.0: Low Level Virtual Machine
+sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
+sys-devel/llvmgold 11: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.19: GNU macro processor
 sys-fs/erofs-utils 1.3: Userspace utilities for linux-erofs file system
 sys-fs/udev 249.6-r2: Linux dynamic and persistent device naming support (aka userspace devfs)
