@@ -21,7 +21,7 @@ sys-apps/systemd-tmpfiles 249.5: Creates, deletes and cleans up volatile and tem
 sys-apps/texinfo 6.8: The GNU info program and utilities
 sys-boot/grub 2.06-r1: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
-sys-devel/binutils 2.37_p1-r1: Tools necessary to build programs
+sys-devel/binutils 2.37_p1-r2: Tools necessary to build programs
 sys-devel/gcc 12.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gdb 9999: GNU debugger
 sys-devel/llvm 11.1.0: Low Level Virtual Machine
@@ -32,7 +32,7 @@ sys-fs/udev 249.6-r2: Linux dynamic and persistent device naming support (aka us
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
 sys-kernel/linux-headers 5.15-r1: Linux system headers
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
-sys-libs/binutils-libs 2.37_p1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.37_p1-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/glibc 2.34-r7 2.35: GNU libc C library
 sys-libs/libseccomp 2.5.3: high level interface to Linux seccomp filter
 virtual/linux-sources 3-r6: Virtual for Linux kernel sources
