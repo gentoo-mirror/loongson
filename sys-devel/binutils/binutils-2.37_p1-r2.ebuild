@@ -1,14 +1,14 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
+inherit libtool flag-o-matic gnuconfig strip-linguas toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="cet default-gold doc +gold multitarget +nls +plugins static-libs test vanilla"
+IUSE="cet default-gold doc +gold multitarget +nls pgo +plugins static-libs test vanilla"
 REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here  (ignored for live ebuilds)
@@ -19,8 +19,11 @@ REQUIRED_USE="default-gold? ( gold )"
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=1
+PATCH_VER=2
 PATCH_DEV=dilfridge
+
+LOONGARCH_PATCH_PV="$(ver_cut 1-2)"
+LOONGARCH_PATCH_VER=20211128-2
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -31,8 +34,10 @@ else
 	SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PV}.tar.xz"
 	[[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 		https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
+	[[ -z ${LOONGARCH_PATCH_VER} ]] || SRC_URI="${SRC_URI}
+		https://loongson-patchballs-glb.qnbkt.xen0n.name/binutils-${LOONGARCH_PATCH_PV}-loongarch-patches-${LOONGARCH_PATCH_VER}.tar.xz"
 	SLOT=$(ver_cut 1-2)
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 #
@@ -85,6 +90,7 @@ src_unpack() {
 
 		cd "${WORKDIR}" || die
 		unpack binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz
+		unpack binutils-${LOONGARCH_PATCH_PV}-loongarch-patches-${LOONGARCH_PATCH_VER}.tar.xz
 
 		# _p patch versions are Gentoo specific tarballs ...
 		local dir=${P%_p?}
@@ -105,7 +111,7 @@ src_prepare() {
 		patchsetname="${PATCH_BINUTILS_VER}-${PATCH_VER}"
 	fi
 
-	if [[ ! -z ${PATCH_VER} ]] || [[ ${PV} == 9999* ]] ; then
+	if [[ -n ${PATCH_VER} ]] || [[ ${PV} == 9999* ]] ; then
 		if ! use vanilla; then
 			einfo "Applying binutils patchset ${patchsetname}"
 			eapply "${WORKDIR}/patch"
@@ -113,9 +119,11 @@ src_prepare() {
 		fi
 	fi
 
-	einfo "Applying LoongArch support patches"
-	eapply "${FILESDIR}"/loongarch-2.37
-	einfo "Done."
+	if [[ -n ${LOONGARCH_PATCH_VER} ]] && [[ ${PV} != 9999* ]] ; then
+		einfo "Applying LoongArch support patchset ${LOONGARCH_PATCH_VER}"
+		eapply "${WORKDIR}/loongarch-${LOONGARCH_PATCH_PV}"
+		einfo "Done."
+	fi
 
 	# Make sure our explicit libdir paths don't get clobbered. #562460
 	sed -i \
@@ -173,6 +181,8 @@ src_configure() {
 
 	# Keep things sane
 	strip-flags
+
+	use elibc_musl && append-ldflags -Wl,-z,stack-size=2097152
 
 	local x
 	echo
@@ -275,6 +285,19 @@ src_configure() {
 		# But the check does not quite work on i686: bug #760926.
 		$(use_enable cet)
 	)
+
+	if ! is_cross ; then
+		myconf+=( $(use_enable pgo pgo-build lto) )
+
+		if use pgo ; then
+			export BUILD_CFLAGS="${CFLAGS}"
+		fi
+	fi
+
+	if use pgo && ! is_cross ; then
+		export BUILD_CFLAGS="${CFLAGS}"
+	fi
+
 	echo ./configure "${myconf[@]}"
 	"${S}"/configure "${myconf[@]}" || die
 
