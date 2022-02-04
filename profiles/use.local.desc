@@ -30,9 +30,6 @@ media-libs/x264:10bit - Set output bit depth to 10, this may not be compatible w
 media-libs/x264:interlaced - enable interlaced encoding support, this can decrease encoding speed by up to 2%
 media-libs/x264:opencl - Add support for OpenCL.
 media-libs/x264:pic - disable optimized assembly code that is not PIC friendly
-net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
-net-misc/ntp:parse-clocks - Add support for PARSE clocks
-net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
 sys-apps/portage:apidoc - Build html API documentation with sphinx-apidoc.
 sys-apps/portage:gentoo-dev - Enable features required for Gentoo ebuild development.
 sys-apps/portage:ipc - Use inter-process communication between portage and running ebuilds.

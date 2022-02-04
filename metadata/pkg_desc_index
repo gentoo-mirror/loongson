@@ -13,7 +13,6 @@ dev-libs/userspace-rcu 0.13.0: userspace RCU (read-copy-update) library
 dev-util/catalyst 3.0.20: Release metatool used for creating releases based on Gentoo Linux
 dev-util/strace 5.16: A useful diagnostic, instructional, and debugging tool
 media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
-net-misc/ntp 4.2.8_p15: Network Time Protocol suite/programs
 sys-apps/diffutils 3.8: Tools to make diffs and compare files
 sys-apps/grep 3.7: GNU regular expression matcher
 sys-apps/portage 3.0.30-r1: The package management and distribution system for Gentoo
