@@ -25,7 +25,7 @@ sys-devel/llvm 11.1.0: Low Level Virtual Machine
 sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 11: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.19: GNU macro processor
-sys-fs/udev 249.6-r2: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 249.9: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
 sys-kernel/linux-headers 5.15-r1: Linux system headers
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
