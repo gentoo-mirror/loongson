@@ -33,7 +33,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-	KEYWORDS=""
+	KEYWORDS="~loong"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 	SRC_URI+=" https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 	SRC_URI+=" https://loongson-patchballs-glb.qnbkt.xen0n.name/${P}-loongarch-patches-${LOONGARCH_PATCH_VER}.tar.xz"
@@ -1303,7 +1303,7 @@ glibc_do_src_install() {
 	# Make sure the non-native interp can be found on multilib systems even
 	# if the main library set isn't installed into the right place.  Maybe
 	# we should query the active gcc for info instead of hardcoding it ?
-	local i ldso_abi ldso_name
+	local i ldso_abi ldso_name target_ldso_path
 	local ldso_abi_list=(
 		# x86
 		amd64   /lib64/ld-linux-x86-64.so.2
@@ -1354,7 +1354,8 @@ glibc_do_src_install() {
 
 		ldso_name="$(alt_prefix)${ldso_abi_list[i+1]}"
 		if [[ ! -L ${ED}/${ldso_name} && ! -e ${ED}/${ldso_name} ]] ; then
-			dosym ../$(get_abi_LIBDIR ${ldso_abi})/${ldso_name##*/} ${ldso_name}
+			target_ldso_path="../$(get_abi_LIBDIR ${ldso_abi})/${ldso_name##*/}"
+			[[ -e ${target_ldso_path} ]] && dosym ${target_ldso_path} ${ldso_name}
 		fi
 	done
 
