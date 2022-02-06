@@ -4,7 +4,7 @@ dev-lang/perl 5.34.0-r6: Larry Wall's Practical Extraction and Report Language
 dev-lang/spidermonkey 68.12.0: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-libs/libbsd 0.11.3 0.11.5: Library to provide useful functions commonly found on BSD systems
 dev-libs/libffi 3.4.2-r1: a portable, high level programming interface to various calling conventions
-dev-libs/nspr 4.32: Netscape Portable Runtime
+dev-libs/nspr 4.33: Netscape Portable Runtime
 dev-libs/openssl 1.1.1m: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/userspace-rcu 0.13.0: userspace RCU (read-copy-update) library
 dev-util/catalyst 3.0.20 3.0.21: Release metatool used for creating releases based on Gentoo Linux
@@ -26,7 +26,7 @@ sys-devel/llvmgold 11: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.19: GNU macro processor
 sys-fs/udev 249.9: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
-sys-kernel/linux-headers 5.15-r1: Linux system headers
+sys-kernel/linux-headers 5.17_rc2_p20220124: Linux system headers
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
 sys-libs/binutils-libs 2.37_p1-r2: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/glibc 2.35: GNU libc C library
