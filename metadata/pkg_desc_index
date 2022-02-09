@@ -16,7 +16,7 @@ sys-apps/portage 3.0.30-r1: The package management and distribution system for G
 sys-apps/systemd-tmpfiles 249.9: Creates, deletes and cleans up volatile and temporary files and directories
 sys-boot/grub 2.06-r1: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
-sys-devel/binutils 2.37_p1-r2 2.37_p1-r3 2.38: Tools necessary to build programs
+sys-devel/binutils 2.37_p1-r3 2.38: Tools necessary to build programs
 sys-devel/gcc 12.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gdb 9999: GNU debugger
 sys-devel/llvm 11.1.0: Low Level Virtual Machine
