@@ -32,7 +32,6 @@ sys-apps/portage:ipc - Use inter-process communication between portage and runni
 sys-apps/portage:native-extensions - Compiles native "C" extensions (speedups, instead of using python backup code). Currently includes libc-locales. This should only be temporarily disabled for some bootstrapping operations. Cross-compilation is not supported.
 sys-apps/portage:rsync-verify - Enable full-tree cryptographic verification of Gentoo repository rsync checkouts using app-portage/gemato.
 sys-apps/portage:xattr - Preserve extended attributes (filesystem-stored metadata) when installing files. Usually only required for hardened systems.
-sys-apps/texinfo:standalone - Build standalone version that survives all Portage bugs
 sys-boot/grub:device-mapper - Enable support for device-mapper from sys-fs/lvm2
 sys-boot/grub:efiemu - Build and install the efiemu runtimes
 sys-boot/grub:fonts - Build and install fonts for the gfxterm module
