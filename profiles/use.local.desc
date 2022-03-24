@@ -80,8 +80,6 @@ sys-boot/grub:libzfs - Enable support for sys-fs/zfs
 sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
-sys-boot/loongarch-acpi-tables-fix:dracut - Install dracut config file for automatically including ACPI tables from this package
-sys-boot/loongarch-acpi-tables-fix:initrd - Install an early initrd ready for use into /boot
 sys-devel/binutils:cet - Enable Intel Control-flow Enforcement Technology.
 sys-devel/binutils:default-gold - Set ld to point to ld.gold instead of ld.bfd
 sys-devel/binutils:gold - Build ld.gold linker
