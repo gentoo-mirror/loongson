@@ -5,7 +5,7 @@ EAPI=7
 
 TOOLCHAIN_GCC_PV=12.0.1
 
-PATCH_VER="3"
+PATCH_VER="4"
 PATCH_GCC_VER="12.0.0"
 MUSL_VER="1"
 MUSL_GCC_VER="11.2.0"
@@ -14,7 +14,7 @@ inherit toolchain
 # Needs to be after inherit (for now?), bug #830908
 # add LoongArch port and further upstream-friendly customizations
 EGIT_REPO_URI="https://github.com/xen0n/gcc.git"
-EGIT_BRANCH=for-gentoo-gcc-12-v20220210
+EGIT_BRANCH=for-gentoo-gcc-12-v20220326
 EGIT_CLONE_TYPE=${EGIT_CLONE_TYPE:-shallow}
 
 # Don't keyword live ebuilds
