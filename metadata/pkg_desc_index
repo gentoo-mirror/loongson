@@ -28,7 +28,7 @@ sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
 sys-kernel/linux-headers 5.17_rc2_p20220124: Linux system headers
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
 sys-libs/binutils-libs 2.38-r101: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
-sys-libs/glibc 2.35-r1: GNU libc C library
+sys-libs/glibc 2.35-r101: GNU libc C library
 sys-libs/libseccomp 2.5.3: high level interface to Linux seccomp filter
 virtual/linux-sources 3-r6: Virtual for Linux kernel sources
 x11-libs/gdk-pixbuf 2.42.6: Image loading library for GTK+
