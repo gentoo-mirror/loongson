@@ -17,7 +17,6 @@ sys-apps/systemd-tmpfiles 249.9: Creates, deletes and cleans up volatile and tem
 sys-boot/grub 2.06-r1: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/binutils 2.38-r101: Tools necessary to build programs
-sys-devel/gcc 12.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gdb 9999: GNU debugger
 sys-devel/llvm 11.1.0: Low Level Virtual Machine
 sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
