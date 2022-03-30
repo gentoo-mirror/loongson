@@ -8,7 +8,6 @@ dev-libs/nspr 4.33: Netscape Portable Runtime
 dev-libs/openssl 1.1.1n: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/userspace-rcu 0.13.1: Userspace RCU (read-copy-update) library
 dev-util/catalyst 3.0.20 3.0.21: Release metatool used for creating releases based on Gentoo Linux
-dev-util/strace 5.16: A useful diagnostic, instructional, and debugging tool
 media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
 sys-apps/diffutils 3.8: Tools to make diffs and compare files
 sys-apps/grep 3.7: GNU regular expression matcher

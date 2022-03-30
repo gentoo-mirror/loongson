@@ -58,9 +58,6 @@ dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/catalyst:iso - Pulls in the depends for building iso images
 dev-util/catalyst:system-bootloader - Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar
-dev-util/strace:aio - Enable dev-libs/libaio support for tracing Asynchronous I/O operations
-dev-util/strace:elfutils - Enable stack backtraces (-k flag) via dev-libs/elfutils
-dev-util/strace:unwind - Enable stack backtraces (-k flag) via sys-libs/libunwind
 media-libs/x264:10bit - Set output bit depth to 10, this may not be compatible with all decoders
 media-libs/x264:interlaced - enable interlaced encoding support, this can decrease encoding speed by up to 2%
 media-libs/x264:opencl - Add support for OpenCL.
