@@ -58,12 +58,6 @@ sys-boot/grub:libzfs - Enable support for sys-fs/zfs
 sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
-sys-devel/binutils:cet - Enable Intel Control-flow Enforcement Technology.
-sys-devel/binutils:default-gold - Set ld to point to ld.gold instead of ld.bfd
-sys-devel/binutils:gold - Build ld.gold linker
-sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
-sys-devel/binutils:pgo - Build binutils with Profile Guided Optimization (PGO) and LTO
-sys-devel/binutils:plugins - Enable plugin support in tools
 sys-devel/gdb:cet - Enable Intel Control-flow Enforcement Technology.
 sys-devel/gdb:lzma - Support lzma compression in ELF debug info
 sys-devel/gdb:multitarget - Support all known targets in one gdb binary
@@ -79,11 +73,7 @@ sys-devel/llvm:gold - Build the binutils plugin
 sys-devel/llvm:ncurses - Support querying terminal properties using ncurses' terminfo
 sys-devel/llvm:xar - Support dumping LLVM bitcode sections in Mach-O files (uses app-arch/xar)
 sys-devel/llvm:z3 - Enable support for sci-mathematics/z3 constraint solver
-sys-fs/udev:kmod - Enable kernel module loading/unloading support using sys-apps/kmod
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
-sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
-sys-libs/binutils-libs:cet - Enable Intel Control-flow Enforcement Technology.
-sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/glibc:cet - Enable Intel Control-flow Enforcement Technology (needs binutils 2.29 and gcc 8)
 sys-libs/glibc:clone3 - Enable the new clone3 syscall within glibc. Can be disabled to allow compatibility with older Electron applications.
 sys-libs/glibc:compile-locales - build *all* locales in src_install; this is generally meant for stage building only as it ignores /etc/locale.gen file and can be pretty slow
