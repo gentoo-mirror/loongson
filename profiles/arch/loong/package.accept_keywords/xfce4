@@ -1,5 +1,3 @@
-acct-group/polkitd ~*
-acct-user/polkitd ~*
 app-accessibility/at-spi2-atk ~*
 app-accessibility/at-spi2-core ~*
 app-crypt/argon2 ~*
@@ -81,11 +79,7 @@ virtual/freedesktop-icon-theme **
 virtual/libelf **
 virtual/perl-Compress-Raw-Bzip2 **
 virtual/perl-Compress-Raw-Zlib **
-virtual/perl-CPAN-Meta-Requirements **
 virtual/perl-IO-Compress **
-virtual/perl-IO-Socket-IP **
-virtual/perl-parent **
-virtual/perl-Time-Local **
 virtual/ttf-fonts **
 x11-apps/mkfontscale ~*
 x11-libs/cairo ~*
