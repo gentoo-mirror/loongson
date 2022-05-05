@@ -1,4 +1,3 @@
-app-arch/lbzip2 ~*
 app-cdr/cdrtools ~*
 app-crypt/mhash ~*
 app-crypt/shash ~*
@@ -8,6 +7,5 @@ dev-python/lazy-object-proxy ~*
 dev-python/pydecomp ~*
 dev-python/snakeoil ~*
 dev-util/catalyst ~*
-sys-fs/dosfstools ~*
 sys-fs/squashfs-tools ~*
 x11-misc/makedepend ~*
