@@ -1,6 +1,6 @@
 app-cdr/cdrtools 3.02_alpha09-r4: A set of tools for CD/DVD reading and recording, including cdrecord
 app-emulation/qemu 7.0.0-r1: QEMU + Kernel-based Virtual Machine userland tools
-app-portage/shengloong 0.1.1: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
+app-portage/shengloong 0.1.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/spidermonkey 68.12.0-r1: SpiderMonkey is Mozilla's JavaScript engine written in C and C++
 dev-libs/nspr 4.33: Netscape Portable Runtime
 dev-util/catalyst 3.0.20 3.0.21: Release metatool used for creating releases based on Gentoo Linux
@@ -15,4 +15,3 @@ sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
 sys-libs/glibc 9999: GNU libc C library
 virtual/linux-sources 3-r6: Virtual for Linux kernel sources
-x11-libs/gdk-pixbuf 2.42.6: Image loading library for GTK+
