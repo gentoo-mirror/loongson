@@ -1,0 +1,14 @@
+BDEPEND=|| ( dev-lang/go dev-lang/go-bootstrap )
+DEFINED_PHASES=compile install postinst test
+DESCRIPTION=A concurrent garbage collected and typesafe programming language
+EAPI=7
+HOMEPAGE=https://go.dev
+INHERIT=toolchain-funcs
+IUSE=cpu_flags_x86_sse2
+KEYWORDS=-* ~loong
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0/1.19_pre20220521
+SRC_URI=https://dev.gentoo.org/~xen0n/distfiles/go1.19-0a1a092c4b.src.tar.gz
+_eclasses_=toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85
+_md5_=a1365548e2905f1ffa1951c3aeb7d2e8

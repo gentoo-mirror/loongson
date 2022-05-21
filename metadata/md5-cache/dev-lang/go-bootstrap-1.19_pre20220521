@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Bootstrap package for dev-lang/go
+EAPI=8
+HOMEPAGE=https://golang.org
+KEYWORDS=-* ~loong
+LICENSE=BSD
+RESTRICT=strip
+SLOT=0
+SRC_URI=loong? ( https://dev.gentoo.org/~xen0n/distfiles/go-linux-loong64-bootstrap-1.19-0a1a092c4b.tbz )
+_md5_=b6ccbfd02e39e62b963136ac553a6765
