@@ -1,14 +1,15 @@
-BDEPEND=>=dev-util/meson-0.59.4 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
+BDEPEND=>=dev-util/meson-0.61.0 virtual/pkgconfig nls? ( sys-devel/gettext ) >=dev-util/meson-0.59.4 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
 DEFINED_PHASES=compile configure install test
-DEPEND=dev-libs/popt virtual/libelf:=
+DEPEND=dev-libs/popt virtual/libelf:= nls? ( virtual/libintl )
 DESCRIPTION=昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 EAPI=8
 HOMEPAGE=https://github.com/xen0n/shengloong
 INHERIT=meson
+IUSE=nls
 KEYWORDS=~amd64 ~loong
 LICENSE=GPL-3+
-RDEPEND=dev-libs/popt virtual/libelf:=
+RDEPEND=dev-libs/popt virtual/libelf:= nls? ( virtual/libintl )
 SLOT=0
-SRC_URI=mirror+https://github.com/xen0n/shengloong/archive/refs/tags/0.2.1.tar.gz -> shengloong-0.2.1.tar.gz
+SRC_URI=mirror+https://github.com/xen0n/shengloong/archive/refs/tags/0.2.2.tar.gz -> shengloong-0.2.2.tar.gz
 _eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	58ec4e54962bf45d065fb95030701514	toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85	python-utils-r1	5dc84801daa87406aafaf535cb947a64	meson	8f48ffde53174aba67239f0da61ac9d3
-_md5_=785865e931a397f6e7556c97ed33ea11
+_md5_=074c6efe7cdca7009571ee29052fe3fa
