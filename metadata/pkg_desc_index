@@ -13,7 +13,5 @@ sys-devel/llvm 11.1.0: Low Level Virtual Machine
 sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 11: LLVMgold plugin symlink for autoloading
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
-sys-kernel/linux-headers 5.18: Linux system headers
 sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
-sys-libs/glibc 2.35-r6: GNU libc C library
 virtual/linux-sources 3-r6: Virtual for Linux kernel sources
