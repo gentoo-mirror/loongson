@@ -4,7 +4,7 @@ dev-lang/go 1.19_pre20220527: A concurrent garbage collected and typesafe progra
 dev-lang/go-bootstrap 1.19_pre20220527: Bootstrap package for dev-lang/go
 dev-util/catalyst 3.0.20 3.0.21: Release metatool used for creating releases based on Gentoo Linux
 media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
-sys-boot/grub 2.06-r1: GNU GRUB boot loader
+sys-boot/grub 2.06-r2 2.11_pre20220617: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/gdb 9999: GNU debugger
 sys-devel/llvm 11.1.0: Low Level Virtual Machine
