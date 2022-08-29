@@ -57,14 +57,6 @@ sys-boot/grub:libzfs - Enable support for sys-fs/zfs
 sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
-sys-devel/gdb:cet - Enable Intel Control-flow Enforcement Technology.
-sys-devel/gdb:lzma - Support lzma compression in ELF debug info
-sys-devel/gdb:multitarget - Support all known targets in one gdb binary
-sys-devel/gdb:python - Enable support for the new internal scripting language, as well as extended pretty printers
-sys-devel/gdb:server - Install the "gdbserver" program (useful for embedded/remote targets)
-sys-devel/gdb:source-highlight - Enable listing highlighting via dev-util/source-highlight
-sys-devel/gdb:xml - Support parsing XML data files needed (at least) for cpu features, memory maps, and syscall tracing
-sys-devel/gdb:xxhash - Use dev-libs/xxhash to speed up internal hashing.
 sys-devel/llvm:binutils-plugin - Build the binutils plugin
 sys-devel/llvm:doc - Build and install the HTML documentation and regenerate the man pages
 sys-devel/llvm:exegesis - Enable performance counter support for llvm-exegesis tool that can be used to measure host machine instruction characteristics
