@@ -2,7 +2,7 @@ app-emulation/qemu 7.0.0-r1: QEMU + Kernel-based Virtual Machine userland tools
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-util/catalyst 3.0.20 3.0.21: Release metatool used for creating releases based on Gentoo Linux
 media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
-sys-boot/grub 2.06-r2 2.11_pre20220901: GNU GRUB boot loader
+sys-boot/grub 2.11_pre20220901: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/llvm 11.1.0: Low Level Virtual Machine
 sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
