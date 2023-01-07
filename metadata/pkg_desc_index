@@ -1,11 +1,5 @@
-app-emulation/qemu 7.0.0-r1: QEMU + Kernel-based Virtual Machine userland tools
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
-media-libs/x264 0.0.20190214: A free library for encoding X264/AVC streams
 sys-boot/grub 2.11_pre20221013: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
-sys-devel/llvm 11.1.0: Low Level Virtual Machine
-sys-devel/llvm-common 11.1.0: Common files shared between multiple slots of LLVM
-sys-devel/llvmgold 11: LLVMgold plugin symlink for autoloading
+sys-devel/lld 16.0.0_pre20230101: The LLVM linker (link editor)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
-sys-kernel/loongarch-git-sources 5.16_rc6-r9: The loongarch-next version of the Linux kernel, with minimal xen0n patches
-virtual/linux-sources 3-r6: Virtual for Linux kernel sources
