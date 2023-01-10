@@ -1,5 +1,6 @@
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-util/catalyst 3.0.22-r1: Release metatool used for creating releases based on Gentoo Linux
+net-libs/libtirpc 1.3.3: Transport Independent RPC library (SunRPC replacement)
 sys-boot/grub 2.11_pre20221013: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/lld 16.0.0_pre20230107: The LLVM linker (link editor)
