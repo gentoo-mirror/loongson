@@ -13,6 +13,7 @@ sys-apps/coreutils:kill - Build the kill program
 sys-apps/coreutils:multicall - Build all tools into a single `coreutils` program akin to busybox to save space
 sys-apps/coreutils:openssl - Use openssl libcrypto hash routines for hash functions
 sys-apps/coreutils:split-usr - Enable this if /bin and /usr/bin are separate directories
+sys-apps/groff:uchardet - Enable automatic encoding detection via app-i18n/uchardet
 sys-boot/grub:device-mapper - Enable support for device-mapper from sys-fs/lvm2
 sys-boot/grub:efiemu - Build and install the efiemu runtimes
 sys-boot/grub:fonts - Build and install fonts for the gfxterm module
