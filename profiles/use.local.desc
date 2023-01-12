@@ -39,3 +39,4 @@ sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware
 sys-libs/libxcrypt:compat - Build with compatibility interfaces for other crypt implementations
 sys-libs/libxcrypt:headers-only - Build and install only the headers.
 sys-libs/libxcrypt:system - Install as system libcrypt.so rather than to an alternate directory (will collide with sys-libs/glibc's version)
+sys-libs/zlib:minizip - include the minizip library for quick and dirty zip extraction

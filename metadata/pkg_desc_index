@@ -18,3 +18,4 @@ sys-devel/binutils 2.39-r4: Tools necessary to build programs
 sys-devel/lld 16.0.0_pre20230107: The LLVM linker (link editor)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
 sys-libs/libxcrypt 4.4.33: Extended crypt library for descrypt, md5crypt, bcrypt, and others
+sys-libs/zlib 1.2.13-r1: Standard (de)compression library
