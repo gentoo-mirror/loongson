@@ -7,6 +7,13 @@ dev-libs/libgcrypt:getentropy - Use getentropy function to obtain randomness fro
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/catalyst:iso - Pulls in the depends for building iso images
 dev-util/catalyst:system-bootloader - Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar
+net-misc/openssh:X509 - Adds support for X.509 certificate authentication
+net-misc/openssh:hpn - Enable high performance ssh
+net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
+net-misc/openssh:livecd - Enable root password logins for live-cd environment.
+net-misc/openssh:security-key - Include builtin U2F/FIDO support
+net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
 sys-apps/coreutils:caps - Add Linux capabilities support in output of file utilities (ls, dir, ...) via sys-libs/libcap
 sys-apps/coreutils:hostname - Build the hostname program
 sys-apps/coreutils:kill - Build the kill program
