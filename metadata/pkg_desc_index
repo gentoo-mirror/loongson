@@ -1,6 +1,5 @@
 app-crypt/rhash 1.4.3: Console utility and library for computing and verifying file hash sums
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
-dev-libs/gmp 6.2.1-r5: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/libgcrypt 1.10.1-r3: General purpose crypto library based on the code used in GnuPG
 dev-libs/libxml2 2.10.3-r1: XML C parser and toolkit
 dev-libs/mpfr 4.2.0: Library for multiple-precision floating-point computations with exact rounding
