@@ -28,6 +28,13 @@ sys-boot/grub:libzfs - Enable support for sys-fs/zfs
 sys-boot/grub:mount - Build and install the grub-mount utility
 sys-boot/grub:themes - Build and install GRUB themes (starfield)
 sys-boot/grub:truetype - Build and install grub-mkfont conversion utility
+sys-devel/binutils:cet - Enable Intel Control-flow Enforcement Technology.
+sys-devel/binutils:default-gold - Set ld to point to ld.gold instead of ld.bfd
+sys-devel/binutils:gold - Build ld.gold linker
+sys-devel/binutils:gprofng - Enable the next-generation gprofng profiler
+sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
+sys-devel/binutils:pgo - Build binutils with Profile Guided Optimization (PGO) and LTO
+sys-devel/binutils:plugins - Enable plugin support in tools
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
 sys-libs/libxcrypt:compat - Build with compatibility interfaces for other crypt implementations
 sys-libs/libxcrypt:headers-only - Build and install only the headers.
