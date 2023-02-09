@@ -6,5 +6,5 @@ sys-apps/coreutils 9.1-r2: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, 
 sys-apps/groff 1.22.4: Text formatter used for man pages
 sys-boot/grub 2.11_pre20221013: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
-sys-devel/lld 16.0.0_rc1: The LLVM linker (link editor)
+sys-devel/lld 16.0.0_rc2: The LLVM linker (link editor)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
