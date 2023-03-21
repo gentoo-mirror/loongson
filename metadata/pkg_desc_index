@@ -1,6 +1,7 @@
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-libs/mpfr 4.2.0: Library for multiple-precision floating-point computations with exact rounding
 dev-util/catalyst 3.0.22-r1: Release metatool used for creating releases based on Gentoo Linux
+dev-util/perf 6.2: Userland tools for Linux Performance Counters
 sys-apps/coreutils 9.1-r2: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/groff 1.22.4: Text formatter used for man pages
 sys-boot/grub 2.11_pre20221013: GNU GRUB boot loader
