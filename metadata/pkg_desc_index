@@ -4,7 +4,7 @@ dev-util/catalyst 3.0.22-r1: Release metatool used for creating releases based o
 dev-util/perf 6.2: Userland tools for Linux Performance Counters
 sys-apps/coreutils 9.1-r2: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/groff 1.22.4: Text formatter used for man pages
-sys-boot/grub 2.11_pre20221013: GNU GRUB boot loader
+sys-boot/grub 2.11_pre20230331: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/lld 16.0.0: The LLVM linker (link editor)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
