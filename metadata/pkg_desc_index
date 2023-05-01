@@ -1,4 +1,5 @@
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
+dev-lang/go 1.20.3: A concurrent garbage collected and typesafe programming language
 dev-lang/rust 1.65.0 1.66.1 1.67.1 1.68.1 1.68.2 1.69.0-r1: Systems programming language from Mozilla
 dev-lang/rust-bin 1.65.0-r1 1.66.1-r1 1.67.1-r2 1.68.1 1.68.2-r1 1.69.0: Systems programming language from Mozilla
 dev-libs/mpfr 4.2.0: Library for multiple-precision floating-point computations with exact rounding
