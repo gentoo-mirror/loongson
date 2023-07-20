@@ -2,40 +2,9 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-dev-lang/rust:clippy - Install clippy, Rust code linter
-dev-lang/rust:dist - Install dist tarballs (used for bootstrapping)
-dev-lang/rust:miri - Install miri, an interpreter for Rust's mid-level intermediate representation (requires USE=nightly, sometimes is broken)
-dev-lang/rust:nightly - Enable nightly (UNSTABLE) features (NOTE: it does not install nightly version, just enables features marked as nightly at time of release)
-dev-lang/rust:parallel-compiler - Build a multi-threaded rustc (experimental, not tested by upstream)
-dev-lang/rust:profiler - Build the profiler runtime and rust-demangler tool (needed for '-C profile-generate' or '-C instrument-coverage' codegen opts)
-dev-lang/rust:rust-analyzer - Install rust-analyzer, A Rust compiler front-end for IDEs (language server)
-dev-lang/rust:rust-src - Install rust-src, needed by developer tools and for build-std (cross)
-dev-lang/rust:rustfmt - Install rustfmt, Rust code formatter
-dev-lang/rust:system-bootstrap - Bootstrap using installed rust compiler
-dev-lang/rust:system-llvm - Use the system LLVM installation
-dev-lang/rust:wasm - Build support for the wasm32-unknown-unknown target
-dev-lang/rust-bin:clippy - Install clippy, Rust code linter
-dev-lang/rust-bin:rust-analyzer - Install rust-analyzer, A Rust compiler front-end for IDEs (language server)
-dev-lang/rust-bin:rust-src - Install rust-src, needed by developer tools and for build-std (cross)
-dev-lang/rust-bin:rustfmt - Install rustfmt, Rust code formatter
 dev-util/catalyst:ccache - Enables ccache support
 dev-util/catalyst:iso - Pulls in the depends for building iso images
 dev-util/catalyst:system-bootloader - Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar
-dev-util/perf:babeltrace - Enable dev-util/babeltrace support
-dev-util/perf:clang - Enable builtin clang and LLVM support
-dev-util/perf:doc - Build documentation and man pages. With this USE flag disabled, the --help parameter for perf and its sub-tools will not be available. This is optional because it depends on a few documentation handling tools that are not always welcome on user systems.
-dev-util/perf:libpfm - Enable dev-libs/libpfm support
-dev-util/perf:numa - Enable NUMA support
-dev-util/perf:perl - Add support for Perl as a scripting language for perf tools.
-dev-util/perf:systemtap - Add support to define SDT event in perf tools.
-dev-util/perf:unwind - Use sys-libs/libunwind for frame unwinding support.
-sys-apps/coreutils:caps - Add Linux capabilities support in output of file utilities (ls, dir, ...) via sys-libs/libcap
-sys-apps/coreutils:hostname - Build the hostname program
-sys-apps/coreutils:kill - Build the kill program
-sys-apps/coreutils:multicall - Build all tools into a single `coreutils` program akin to busybox to save space
-sys-apps/coreutils:openssl - Use openssl libcrypto hash routines for hash functions
-sys-apps/coreutils:split-usr - Enable this if /bin and /usr/bin are separate directories
-sys-apps/groff:uchardet - Enable automatic encoding detection via app-i18n/uchardet
 sys-boot/grub:device-mapper - Enable support for device-mapper from sys-fs/lvm2
 sys-boot/grub:efiemu - Build and install the efiemu runtimes
 sys-boot/grub:fonts - Build and install fonts for the gfxterm module
