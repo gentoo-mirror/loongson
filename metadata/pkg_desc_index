@@ -2,5 +2,5 @@ app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to n
 dev-util/catalyst 3.0.22-r1: Release metatool used for creating releases based on Gentoo Linux
 sys-boot/grub 2.11_pre20230331: GNU GRUB boot loader
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
-sys-devel/lld 16.0.6 17.0.0_pre20230717 17.0.0_pre20230722: The LLVM linker (link editor)
+sys-devel/lld 16.0.6 17.0.0_pre20230722: The LLVM linker (link editor)
 sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
