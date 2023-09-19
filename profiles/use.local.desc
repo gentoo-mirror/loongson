@@ -2,7 +2,12 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-dev-util/catalyst:ccache - Enables ccache support
-dev-util/catalyst:iso - Pulls in the depends for building iso images
-dev-util/catalyst:system-bootloader - Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar
+dev-lang/ghc:binary - Install the binary version directly, rather than using it to build the source version.
+dev-lang/ghc:elfutils - Enable DWARF-based backtraces using dev-libs/elfutils.
+dev-lang/ghc:ghcbootstrap - Internal: Bootstrap GHC from an existing GHC installation.
+dev-lang/ghc:ghcmakebinary - Internal: Build binary friendly for redistribution.
+dev-lang/ghc:gmp - Use dev-libs/gmp for integer operations (works faster, but an external depend).
+dev-lang/ghc:llvm - Pull in dependencies for the sys-devel/llvm codegen backend.
+dev-lang/ghc:numa - Enable NUMA thread balancing policy using sys-process/numactl.
+dev-lang/ghc:unregisterised - Create an unregisterised build in which only the C codegen backend will be available.
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
