@@ -58,6 +58,7 @@ DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="https://www.thunderbird.net/"
 
 #KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~loong"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -599,7 +600,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}/firefox-patches"
 
-	use loong && eapply "${FILESDIR}/firefox-117-loong.patch"
+	use loong && eapply "${FILESDIR}/firefox-115-loong.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
