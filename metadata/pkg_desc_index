@@ -1,3 +1,4 @@
+app-emulation/qemu 8.1.1: QEMU + Kernel-based Virtual Machine userland tools
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
 mail-client/thunderbird 115.2.3: Thunderbird Mail Client
