@@ -1,8 +1,8 @@
 app-emulation/qemu 8.1.1: QEMU + Kernel-based Virtual Machine userland tools
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
-mail-client/thunderbird 115.2.3: Thunderbird Mail Client
+mail-client/thunderbird 115.3.1: Thunderbird Mail Client
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/lld 16.0.6-r1: The LLVM linker (link editor)
-sys-kernel/genkernel 4.2.6-r2: Gentoo automatic kernel building scripts
-www-client/firefox 117.0.1: Firefox Web Browser
+sys-kernel/genkernel 4.3.6: Gentoo automatic kernel building scripts
+www-client/firefox 117.0.1 118.0.1: Firefox Web Browser
