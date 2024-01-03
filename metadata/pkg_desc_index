@@ -1,10 +1,12 @@
 app-emulation/la-ow-syscall 0.1.0: Linux kernel module for compatibility with LoongArch's old-world ABI
 app-emulation/liblol 0.0.3-r2: LoongArch old-world ABI compatibility layer from AOSC OS
 app-emulation/qemu 8.1.1: QEMU + Kernel-based Virtual Machine userland tools
+app-office/wps-office 11.1.0.11711: WPS Office is an office productivity suite, Here is the Chinese version
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
 mail-client/thunderbird 115.6.0: Thunderbird Mail Client
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/lld 16.0.6-r1: The LLVM linker (link editor)
 sys-kernel/genkernel 4.3.6: Gentoo automatic kernel building scripts
+virtual/loong-ow-compat 0: Virtual for LoongArch old-world compatibility
 www-client/firefox 121.0: Firefox Web Browser
