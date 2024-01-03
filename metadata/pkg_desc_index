@@ -1,5 +1,5 @@
 app-emulation/la-ow-syscall 0.1.0: Linux kernel module for compatibility with LoongArch's old-world ABI
-app-emulation/liblol 0.0.3-r1: LoongArch old-world ABI compatibility layer from AOSC OS
+app-emulation/liblol 0.0.3-r2: LoongArch old-world ABI compatibility layer from AOSC OS
 app-emulation/qemu 8.1.1: QEMU + Kernel-based Virtual Machine userland tools
 app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
