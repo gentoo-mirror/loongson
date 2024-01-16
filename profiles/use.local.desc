@@ -31,6 +31,21 @@ mail-client/thunderbird:system-python-libs - Use system's python site instead of
 mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp instead of bundled.
 mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
+www-client/chromium:debug - Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.
+www-client/chromium:gtk4 - Build with GTK4 headers.
+www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
+www-client/chromium:headless - Build Ozone only with headless backend, NOT RECOMMENDED for general use.
+www-client/chromium:libcxx - Use bundled libc++ instead of libstdc++ for building.
+www-client/chromium:lto - Build with Link Time Optimizations (via clang's ThinLTO)
+www-client/chromium:official - Enable Official build instead of Developer build.
+www-client/chromium:pax-kernel - Allow building on a PaX-enabled kernel
+www-client/chromium:pgo - Build with Profile Guided Optimizations (2-stage compilation)
+www-client/chromium:proprietary-codecs - Enable codecs for patent-encumbered audio and video formats.
+www-client/chromium:system-harfbuzz - Use system media-libs/harfbuzz instead of the bundled library.
+www-client/chromium:system-icu - Use system dev-libs/icu instead of the bundled one
+www-client/chromium:system-png - Use system media-libs/libpng instead of the bundled library
+www-client/chromium:system-zstd - Use system app-arch/zstd instead of the bundled one.
+www-client/chromium:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/firefox:clang - Use Clang compiler instead of GCC
 www-client/firefox:eme-free - Disable EME (DRM plugin) capability at build time
 www-client/firefox:geckodriver - Enable WebDriver support
