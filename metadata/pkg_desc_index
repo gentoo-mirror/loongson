@@ -4,6 +4,6 @@ mail-client/thunderbird 115.6.0: Thunderbird Mail Client
 sys-boot/loongarch-acpi-tables-fix 20210905-r1: Fixed ACPI tables for LoongArch
 sys-devel/lld 16.0.6-r2: The LLVM linker (link editor)
 sys-kernel/genkernel 4.3.6: Gentoo automatic kernel building scripts
-www-client/chromium 120.0.6099.216: Open-source version of Google Chrome web browser
+www-client/chromium 120.0.6099.224: Open-source version of Google Chrome web browser
 www-client/firefox 121.0: Firefox Web Browser
 x11-libs/pixman 0.43.0: Low-level pixel manipulation routines
