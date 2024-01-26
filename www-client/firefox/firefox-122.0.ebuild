@@ -1,9 +1,9 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-121-patches-01.tar.xz"
+FIREFOX_PATCHSET="firefox-122-patches-01.tar.xz"
 
 LLVM_MAX_SLOT=17
 
@@ -57,7 +57,7 @@ DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
 #KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
-KEYWORDS="~loong"
+#KEYWORDS="~loong"
 
 SLOT="rapid"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -68,7 +68,7 @@ IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +
 IUSE+=" +telemetry valgrind wayland wifi +X"
 
 # Firefox-only IUSE
-IUSE+=" geckodriver +gmp-autoupdate screencast"
+IUSE+=" geckodriver +gmp-autoupdate"
 
 # "-jumbo-build +system-icu": build failure on firefox-120:
 #   firefox-120.0/intl/components/src/TimeZone.cpp:345:3: error: use of undeclared identifier 'MOZ_TRY'
@@ -80,7 +80,6 @@ REQUIRED_USE="|| ( X wayland )
 
 FF_ONLY_DEPEND="!www-client/firefox:0
 	!www-client/firefox:esr
-	screencast? ( media-video/pipewire:= )
 	selinux? ( sec-policy/selinux-mozilla )"
 BDEPEND="${PYTHON_DEPS}
 	|| (
@@ -100,15 +99,6 @@ BDEPEND="${PYTHON_DEPS}
 				sys-devel/lld:16
 				virtual/rust:0/llvm-16
 				pgo? ( =sys-libs/compiler-rt-sanitizers-16*[profile] )
-			)
-		)
-		(
-			sys-devel/clang:15
-			sys-devel/llvm:15
-			clang? (
-				sys-devel/lld:15
-				virtual/rust:0/llvm-15
-				pgo? ( =sys-libs/compiler-rt-sanitizers-15*[profile] )
 			)
 		)
 	)
@@ -169,7 +159,6 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	libproxy? ( net-libs/libproxy )
 	selinux? ( sec-policy/selinux-mozilla )
 	sndio? ( >=media-sound/sndio-1.8.0-r1 )
-	screencast? ( media-video/pipewire:= )
 	system-av1? (
 		>=media-libs/dav1d-1.0.0:=
 		>=media-libs/libaom-1.0.0:=
@@ -184,7 +173,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	system-libvpx? ( >=media-libs/libvpx-1.8.2:0=[postproc] )
 	system-png? ( >=media-libs/libpng-1.6.35:0=[apng] )
 	system-webp? ( >=media-libs/libwebp-1.1.0:0= )
-	valgrind? ( dev-util/valgrind )
+	valgrind? ( dev-debug/valgrind )
 	wayland? (
 		>=media-libs/libepoxy-1.5.10-r1
 		x11-libs/gtk+:3[wayland]
@@ -669,18 +658,18 @@ src_prepare() {
 
 	# Workaround for bgo#917599
 	if has_version ">=dev-libs/icu-74.1" && use system-icu ; then
-		eapply "${WORKDIR}"/firefox-patches/0028-bmo-1862601-system-icu-74.patch
+		eapply "${WORKDIR}"/firefox-patches/0026-bmo-1862601-system-icu-74.patch
 	fi
-	rm -v "${WORKDIR}"/firefox-patches/0028-bmo-1862601-system-icu-74.patch || die
+	rm -v "${WORKDIR}"/firefox-patches/*-bmo-1862601-system-icu-74.patch || die
 
 	# Workaround for bgo#915651 on musl
-	if ! use elibc_glibc ; then
+	if use elibc_glibc ; then
 		rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
 	fi
 
 	eapply "${WORKDIR}/firefox-patches"
 
-	use loong && eapply "${FILESDIR}/firefox-121-loong"
+	use loong && eapply "${FILESDIR}/firefox-122-loong"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -693,23 +682,35 @@ src_prepare() {
 		if use amd64 ; then
 			export RUST_TARGET="x86_64-unknown-linux-musl"
 		elif use x86 ; then
-			export RUST_TARGET="x86-unknown-linux-musl"
+			export RUST_TARGET="i686-unknown-linux-musl"
 		else
 			die "Unknown musl chost, please post your rustc -vV along with emerge --info on Gentoo's bug #915651"
 		fi
 	fi
 
 	# Make LTO respect MAKEOPTS
-	sed -i \
-		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/build/moz.configure/lto-pgo.configure \
-		|| die "sed failed to set num_cores"
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/build/moz.configure/lto-pgo.configure || die "Failed sedding multiprocessing.cpu_count"
 
 	# Make ICU respect MAKEOPTS
-	sed -i \
-		-e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/intl/icu_sources_data.py \
-		|| die "sed failed to set num_cores"
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/intl/icu_sources_data.py || die "Failed sedding multiprocessing.cpu_count"
+
+	# Respect MAKEOPTS all around (maybe some find+sed is better)
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/python/mozbuild/mozbuild/base.py || die "Failed sedding multiprocessing.cpu_count"
+
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/third_party/libwebrtc/build/toolchain/get_cpu_count.py || die "Failed sedding multiprocessing.cpu_count"
+
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/third_party/libwebrtc/build/toolchain/get_concurrent_links.py || die "Failed sedding multiprocessing.cpu_count"
+
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/third_party/python/gyp/pylib/gyp/input.py || die "Failed sedding multiprocessing.cpu_count"
+
+	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
+		"${S}"/python/mozbuild/mozbuild/code_analysis/mach_commands.py || die "Failed sedding multiprocessing.cpu_count"
 
 	# sed-in toolchain prefix
 	sed -i \
@@ -1293,11 +1294,9 @@ src_install() {
 			EOF
 		fi
 
-		# Install the vaapitest binary on supported arches (+arm when keyworded)
-		if use amd64 || use arm64 || use x86 ; then
-			exeinto "${MOZILLA_FIVE_HOME}"
-			doexe "${BUILD_DIR}"/dist/bin/vaapitest
-		fi
+		# Install the vaapitest binary on supported arches (122.0 supports all platforms, bmo#1865969)
+		exeinto "${MOZILLA_FIVE_HOME}"
+		doexe "${BUILD_DIR}"/dist/bin/vaapitest
 
 		# Install the v4l2test on supported arches (+ arm, + riscv64 when keyworded)
 		if use arm64 ; then
@@ -1452,6 +1451,7 @@ pkg_postinst() {
 	optfeature_header "Optional programs for extra features:"
 	optfeature "desktop notifications" x11-libs/libnotify
 	optfeature "fallback mouse cursor theme e.g. on WMs" gnome-base/gsettings-desktop-schemas
+	optfeature "screencasting with pipewire" sys-apps/xdg-desktop-portal
 	if use hwaccel && has_version "x11-drivers/nvidia-drivers"; then
 		optfeature "hardware acceleration with NVIDIA cards" media-libs/nvidia-vaapi-driver
 	fi
