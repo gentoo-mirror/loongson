@@ -3,7 +3,7 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-115esr-patches-08.tar.xz"
+FIREFOX_PATCHSET="firefox-115esr-patches-09.tar.xz"
 
 LLVM_MAX_SLOT=17
 
@@ -117,6 +117,12 @@ BDEPEND="${PYTHON_DEPS}
 	net-libs/nodejs
 	virtual/pkgconfig
 	!clang? ( >=virtual/rust-1.65 )
+	!elibc_glibc? (
+		|| (
+			dev-lang/rust
+			<dev-lang/rust-bin-1.73
+		)
+	)
 	amd64? ( >=dev-lang/nasm-2.14 )
 	x86? ( >=dev-lang/nasm-2.14 )
 	pgo? (
@@ -617,6 +623,11 @@ src_prepare() {
 	fi
 	rm -v "${WORKDIR}"/firefox-patches/0029-bmo-1862601-system-icu-74.patch || die
 
+	# Workaround for bgo#915651 on musl
+	if use elibc_glibc ; then
+		rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
+	fi
+
 	eapply "${WORKDIR}/firefox-patches"
 
 	use loong && eapply "${FILESDIR}/firefox-115.6-loong"
@@ -626,6 +637,17 @@ src_prepare() {
 
 	# Make cargo respect MAKEOPTS
 	export CARGO_BUILD_JOBS="$(makeopts_jobs)"
+
+	# Workaround for bgo#915651
+	if ! use elibc_glibc ; then
+		if use amd64 ; then
+			export RUST_TARGET="x86_64-unknown-linux-musl"
+		elif use x86 ; then
+			export RUST_TARGET="i686-unknown-linux-musl"
+		else
+			die "Unknown musl chost, please post your rustc -vV along with emerge --info on Gentoo's bug #915651"
+		fi
+	fi
 
 	# Make LTO respect MAKEOPTS
 	sed -i \
@@ -992,26 +1014,14 @@ src_configure() {
 		fi
 	fi
 
-	if use clang ; then
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1482204
-		# https://bugzilla.mozilla.org/show_bug.cgi?id=1483822
-		# toolkit/moz.configure Elfhack section: target.cpu in ('arm', 'x86', 'x86_64')
-		local disable_elf_hack=
-		if use amd64 ; then
-			disable_elf_hack=yes
-		elif use x86 ; then
-			disable_elf_hack=yes
-		elif use arm ; then
-			disable_elf_hack=yes
-		fi
+	# With profile 23.0 elf-hack=legacy is broken with gcc.
+	# With Firefox-115esr elf-hack=relr isn't available (only in rapid).
+	# Solution: Disable build system's elf-hack completely, and add "-z,pack-relative-relocs"
+	#  manually with gcc.
+	mozconfig_add_options_ac 'elf-hack disabled' --disable-elf-hack
 
-		if [[ -n ${disable_elf_hack} ]] ; then
-			mozconfig_add_options_ac 'elf-hack is broken when using Clang' --disable-elf-hack
-		fi
-	fi
-
-	if use elibc_musl && use arm64 ; then
-		mozconfig_add_options_ac 'elf-hack is broken when using musl/arm64' --disable-elf-hack
+	if use amd64 || use x86 ; then
+		! use clang && append-ldflags "-z,pack-relative-relocs"
 	fi
 
 	# Additional ARCH support
