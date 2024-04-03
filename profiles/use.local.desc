@@ -32,6 +32,7 @@ mail-client/thunderbird:system-webp - Use the system-wide media-libs/libwebp ins
 mail-client/thunderbird:wifi - Enable necko-wifi for NetworkManager integration, and access point MAC address scanning for better precision with opt-in geolocation services
 sys-kernel/genkernel:firmware - Prefer system firmware sys-kernel/linux-firmware over local copy.
 www-client/chromium:debug - Enable DCHECK feature with severity configurable at runtime. Mostly intended for debugging and development, NOT RECOMMENDED for general use.
+www-client/chromium:ffmpeg-chromium - (binpkg only) Use Chromium FFmpeg fork (media-video/ffmpeg-chromium) rather than mainline FFmpeg (media-video/ffmpeg)
 www-client/chromium:gtk4 - Build with GTK4 headers.
 www-client/chromium:hangouts - Enable support for Google Hangouts features such as screen sharing
 www-client/chromium:headless - Build Ozone only with headless backend, NOT RECOMMENDED for general use.
@@ -44,6 +45,7 @@ www-client/chromium:proprietary-codecs - Enable codecs for patent-encumbered aud
 www-client/chromium:system-harfbuzz - Use system media-libs/harfbuzz instead of the bundled library.
 www-client/chromium:system-icu - Use system dev-libs/icu instead of the bundled one
 www-client/chromium:system-png - Use system media-libs/libpng instead of the bundled library
+www-client/chromium:system-toolchain - Use system toolchain instead of the bundled one (if possible)
 www-client/chromium:system-zstd - Use system app-arch/zstd instead of the bundled one.
 www-client/chromium:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
 www-client/firefox:clang - Use Clang compiler instead of GCC
