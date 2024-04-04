@@ -1,4 +1,4 @@
-app-portage/shengloong 0.2.2: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
+app-portage/shengloong 0.2.2-r1: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
 mail-client/thunderbird 115.8.0 115.9.0: Thunderbird Mail Client
 sys-kernel/genkernel 4.3.10: Gentoo automatic kernel building scripts
