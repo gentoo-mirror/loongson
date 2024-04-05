@@ -94,7 +94,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0/stable"
 #KEYWORDS="~amd64 ~arm64 ~ppc64"
-#KEYWORDS="~loong"
+KEYWORDS="~loong"
 IUSE_SYSTEM_LIBS="+system-harfbuzz +system-icu +system-png +system-zstd"
 IUSE="+X ${IUSE_SYSTEM_LIBS} bindist cups debug ffmpeg-chromium gtk4 +hangouts headless kerberos libcxx lto +official pax-kernel pgo +proprietary-codecs pulseaudio"
 IUSE+=" qt5 qt6 +screencast selinux +system-toolchain +vaapi +wayland +widevine"
@@ -458,7 +458,6 @@ src_prepare() {
 		local p
 		local other_patches_to_apply=(
 			Fedora-chromium-121-nullptr_t-without-namespace-std
-			Debian-fixes-absl-optional
 			Debian-upstream-std-to-address
 			Debian-fixes-internalalloc
 			Debian-fixes-optional2
