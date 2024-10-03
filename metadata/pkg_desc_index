@@ -1,6 +1,6 @@
 app-portage/shengloong 0.2.2-r1: 昇龍 -- upgrades LoongArch sysroot in-place to new glibc symbol version
 dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
-mail-client/thunderbird 115.14.0 128.2.3: Thunderbird Mail Client
+mail-client/thunderbird 115.15.0 128.3.0: Thunderbird Mail Client
 sys-kernel/genkernel 4.3.14: Gentoo automatic kernel building scripts
 www-client/chromium 125.0.6422.60: Open-source version of Google Chrome web browser
 www-client/firefox 128.1.0 129.0.2 130.0.1 131.0: Firefox Web Browser
