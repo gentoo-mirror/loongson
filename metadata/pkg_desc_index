@@ -3,5 +3,5 @@ dev-lang/ghc 9.6.2: The Glasgow Haskell Compiler
 mail-client/thunderbird 128.4.4: Thunderbird Mail Client
 sys-kernel/genkernel 4.3.14: Gentoo automatic kernel building scripts
 www-client/chromium 125.0.6422.60: Open-source version of Google Chrome web browser
-www-client/firefox 128.4.0-r1 132.0.2 133.0: Firefox Web Browser
+www-client/firefox 128.5.0 132.0.2 133.0: Firefox Web Browser
 x11-libs/pixman 0.43.0: Low-level pixel manipulation routines
