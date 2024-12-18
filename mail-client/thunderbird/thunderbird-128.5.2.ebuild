@@ -64,7 +64,7 @@ S="${WORKDIR}/${PN}-${PV%_*}"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 SLOT="0"
 #KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
-#KEYWORDS="~loong"
+KEYWORDS="~loong"
 
 IUSE="+clang +dbus debug eme-free hardened hwaccel jack libproxy lto pgo pulseaudio sndio selinux"
 IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx"
@@ -522,7 +522,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}/firefox-patches"
 
-	eapply "${FILESDIR}/firefox-128.4-loong"
+	eapply "${FILESDIR}/firefox-128.5-loong"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
