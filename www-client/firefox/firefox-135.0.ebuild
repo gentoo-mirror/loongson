@@ -3,19 +3,20 @@
 
 EAPI=8
 
-FIREFOX_PATCHSET="firefox-128esr-patches-08.tar.xz"
+FIREFOX_PATCHSET="firefox-135-patches-02.tar.xz"
 
 LLVM_COMPAT=( 17 18 19 )
 
-PYTHON_COMPAT=( python3_{10..12} )
-PYTHON_REQ_USE="ncurses,sqlite,ssl"
-
 # This will also filter rust versions that don't match LLVM_COMPAT in the non-clang path; this is fine.
 RUST_NEEDS_LLVM=1
+
 # If not building with clang we need at least rust 1.76
 RUST_MIN_VER=1.77.1
 
-WANT_AUTOCONF="2.1"
+PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_REQ_USE="ncurses,sqlite,ssl"
+
+WANT_AUTOCONF="2.71"
 
 VIRTUALX_REQUIRED="manual"
 
@@ -24,7 +25,7 @@ VIRTUALX_REQUIRED="manual"
 WASI_SDK_VER=25.0
 WASI_SDK_LLVM_VER=19
 
-MOZ_ESR=yes
+MOZ_ESR=
 
 MOZ_PV=${PV}
 MOZ_PV_SUFFIX=
@@ -72,14 +73,15 @@ SRC_URI="${MOZ_SRC_BASE_URI}/source/${MOZ_P}.source.tar.xz -> ${MOZ_P_DISTFILES}
 		amd64? ( https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${WASI_SDK_VER/.*/}/wasi-sdk-${WASI_SDK_VER}-x86_64-linux.tar.gz )
 		arm64? ( https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${WASI_SDK_VER/.*/}/wasi-sdk-${WASI_SDK_VER}-arm64-linux.tar.gz )
 	)"
+
 S="${WORKDIR}/${PN}-${PV%_*}"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-#KEYWORDS="amd64 arm64 ~ppc64 ~riscv ~x86"
-KEYWORDS="~loong"
+#KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
+#KEYWORDS="~loong"
 
-IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio selinux sndio"
-IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-libevent +system-libvpx"
-IUSE+=" system-png +system-webp wayland wifi +X"
+IUSE="+clang dbus debug eme-free hardened hwaccel jack libproxy pgo pulseaudio sndio selinux"
+IUSE+=" +system-av1 +system-harfbuzz +system-icu +system-jpeg +system-jpeg +system-libevent"
+IUSE+=" +system-libvpx system-png +system-webp valgrind wayland wifi +X"
 
 # Firefox-only IUSE
 IUSE+=" +gmp-autoupdate gnome-shell +jumbo-build openh264 +telemetry wasm-sandbox"
@@ -93,7 +95,8 @@ REQUIRED_USE="|| ( X wayland )
 	pgo? ( jumbo-build )
 	wasm-sandbox? ( llvm_slot_19 )
 	wayland? ( dbus )
-	wifi? ( dbus )"
+	wifi? ( dbus )
+"
 
 FF_ONLY_DEPEND="!www-client/firefox:0
 	selinux? ( sec-policy/selinux-mozilla )"
@@ -134,7 +137,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	dev-libs/expat
 	dev-libs/glib:2
 	dev-libs/libffi:=
-	>=dev-libs/nss-3.101
+	>=dev-libs/nss-3.107
 	>=dev-libs/nspr-4.35
 	media-libs/alsa-lib
 	media-libs/fontconfig
@@ -174,6 +177,7 @@ COMMON_DEPEND="${FF_ONLY_DEPEND}
 	system-libvpx? ( >=media-libs/libvpx-1.8.2:0=[postproc] )
 	system-png? ( >=media-libs/libpng-1.6.35:0=[apng] )
 	system-webp? ( >=media-libs/libwebp-1.1.0:0= )
+	valgrind? ( dev-debug/valgrind )
 	wayland? (
 		>=media-libs/libepoxy-1.5.10-r1
 		x11-libs/gtk+:3[wayland]
@@ -460,10 +464,12 @@ pkg_pretend() {
 		fi
 
 		# Ensure we have enough disk space to compile
-		if use pgo || tc-is-lto || use debug ; then
-			CHECKREQS_DISK_BUILD="13500M"
+		if use pgo || use debug ; then
+			CHECKREQS_DISK_BUILD="14300M"
+		elif tc-is-lto ; then
+			CHECKREQS_DISK_BUILD="10600M"
 		else
-			CHECKREQS_DISK_BUILD="6600M"
+			CHECKREQS_DISK_BUILD="6800M"
 		fi
 
 		check-reqs_pkg_pretend
@@ -496,10 +502,12 @@ pkg_setup() {
 		fi
 
 		# Ensure we have enough disk space to compile
-		if use pgo || [[ ${use_lto} == "yes" ]] || use debug ; then
-			CHECKREQS_DISK_BUILD="13500M"
+		if use pgo || use debug ; then
+			CHECKREQS_DISK_BUILD="14300M"
+		elif [[ ${use_lto} == "yes" ]] ; then
+			CHECKREQS_DISK_BUILD="10600M"
 		else
-			CHECKREQS_DISK_BUILD="6400M"
+			CHECKREQS_DISK_BUILD="6800M"
 		fi
 
 		check-reqs_pkg_setup
@@ -588,12 +596,6 @@ src_prepare() {
 		rm -v "${WORKDIR}"/firefox-patches/*-LTO-Only-enable-LTO-*.patch || die
 	fi
 
-	# Workaround for bgo#917599
-	if has_version ">=dev-libs/icu-74.1" && use system-icu ; then
-		eapply "${WORKDIR}"/firefox-patches/*-bmo-1862601-system-icu-74.patch
-	fi
-	rm -v "${WORKDIR}"/firefox-patches/*-bmo-1862601-system-icu-74.patch || die
-
 	# Workaround for bgo#915651 on musl
 	if use elibc_glibc ; then
 		rm -v "${WORKDIR}"/firefox-patches/*bgo-748849-RUST_TARGET_override.patch || die
@@ -601,7 +603,7 @@ src_prepare() {
 
 	eapply "${WORKDIR}/firefox-patches"
 
-	eapply "${FILESDIR}/firefox-128.5-loong"
+	eapply "${FILESDIR}/firefox-$(ver_cut 1)-loong"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -652,26 +654,11 @@ src_prepare() {
 	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}"/build/moz.configure/lto-pgo.configure || die "Failed sedding multiprocessing.cpu_count"
 
-	# Make ICU respect MAKEOPTS
 	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/intl/icu_sources_data.py || die "Failed sedding multiprocessing.cpu_count"
-
-	# Respect MAKEOPTS all around (maybe some find+sed is better)
-	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/python/mozbuild/mozbuild/base.py || die "Failed sedding multiprocessing.cpu_count"
-
-	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/third_party/libwebrtc/build/toolchain/get_cpu_count.py || die "Failed sedding multiprocessing.cpu_count"
-
-	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/third_party/libwebrtc/build/toolchain/get_concurrent_links.py ||
-			die "Failed sedding multiprocessing.cpu_count"
+		"${S}"/third_party/chromium/build/toolchain/get_cpu_count.py || die "Failed sedding multiprocessing.cpu_count"
 
 	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
 		"${S}"/third_party/python/gyp/pylib/gyp/input.py || die "Failed sedding multiprocessing.cpu_count"
-
-	sed -i -e "s/multiprocessing.cpu_count()/$(makeopts_jobs)/" \
-		"${S}"/python/mozbuild/mozbuild/code_analysis/mach_commands.py || die "Failed sedding multiprocessing.cpu_count"
 
 	# sed-in toolchain prefix
 	sed -i \
@@ -805,14 +792,12 @@ src_configure() {
 		--disable-crashreporter \
 		--disable-disk-remnant-avoidance \
 		--disable-geckodriver \
-		--disable-gpsd \
 		--disable-install-strip \
 		--disable-legacy-profile-creation \
 		--disable-parental-controls \
 		--disable-strip \
 		--disable-tests \
 		--disable-updater \
-		--disable-valgrind \
 		--disable-wmf \
 		--enable-negotiateauth \
 		--enable-new-pass-manager \
@@ -851,14 +836,15 @@ src_configure() {
 	# bug 833001, bug 903411#c8
 	if use loong || use ppc64 || use riscv; then
 		mozconfig_add_options_ac '' --disable-sandbox
+	elif use valgrind; then
+		mozconfig_add_options_ac 'valgrind requirement' --disable-sandbox
 	else
 		mozconfig_add_options_ac '' --enable-sandbox
 	fi
 
-	# Enable JIT on riscv64 explicitly, since it's not activated automatically via "known arches" list.
-	# Update 128.1.0: Disable jit on riscv (this line can be blanked to disable by default),
-	# bgo#937867.
-	use riscv && mozconfig_add_options_ac 'Disable JIT for RISC-V 64' --disable-jit
+	# Enable JIT on riscv64 explicitly
+	# Can be removed once upstream enable it by default in the future.
+	use riscv && mozconfig_add_options_ac 'Enable JIT for RISC-V 64' --enable-jit
 
 	if [[ -s "${S}/api-google.key" ]] ; then
 		local key_origin="Gentoo default"
@@ -907,6 +893,7 @@ src_configure() {
 
 	mozconfig_use_enable dbus
 	mozconfig_use_enable libproxy
+	mozconfig_use_enable valgrind
 
 	use eme-free && mozconfig_add_options_ac '+eme-free' --disable-eme
 
@@ -1058,6 +1045,10 @@ src_configure() {
 		mozconfig_add_options_ac '!elibc_glibc' --disable-jemalloc
 	fi
 
+	if use valgrind; then
+		mozconfig_add_options_ac 'valgrind requirement' --disable-jemalloc
+	fi
+
 	# System-av1 fix
 	use system-av1 && append-ldflags "-Wl,--undefined-version"
 
@@ -1118,13 +1109,17 @@ src_configure() {
 	echo "=========================================================="
 	echo
 
+	if use valgrind; then
+		sed -i -e 's/--enable-optimize=-O[0-9s]/--enable-optimize="-g -O2"/' .mozconfig || die
+	fi
+
 	./mach configure || die
 }
 
 src_compile() {
 	local virtx_cmd=
 
-	if [[ ${use_lto} == "yes" ]] && tc-ld-is-mold ; then
+	if [[ ${use_lto} == "yes" ]] && tc-ld-is-mold; then
 		# increase ulimit with mold+lto, bugs #892641, #907485
 		if ! ulimit -n 16384 1>/dev/null 2>&1 ; then
 			ewarn "Unable to modify ulimits - building with mold+lto might fail due to low ulimit -n resources."
@@ -1253,10 +1248,10 @@ src_install() {
 
 	# Install icons
 	local icon_srcdir="${S}/browser/branding/official"
-	local icon_symbolic_file="${FILESDIR}/icon/firefox-symbolic.svg"
 
+	# Prefer the upstream svg file they use when packaging flatpak so it's always up-to-date.
 	insinto /usr/share/icons/hicolor/symbolic/apps
-	newins "${icon_symbolic_file}" ${PN}-symbolic.svg
+	newins "${S}"/taskcluster/docker/firefox-flatpak/firefox-symbolic.svg firefox-symbolic.svg
 
 	local icon size
 	for icon in "${icon_srcdir}"/default*.png ; do
